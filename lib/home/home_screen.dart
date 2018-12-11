@@ -16,15 +16,16 @@ class NavigationIconView {
       activeIcon: activeIcon,
       title: Text(title)
     );
-
-
 }
 
 class HomeScreen extends StatefulWidget {
+  
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  int _currentIndex = 0;
 
   List<NavigationIconView> _navigationViews;
 
@@ -56,7 +57,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ];
     }
 
-
   @override
     Widget build(BuildContext context) {
 
@@ -64,21 +64,29 @@ class _HomeScreenState extends State<HomeScreen> {
         items: _navigationViews.map((NavigationIconView view) {
           return view.item;
         }).toList(),
-        currentIndex: 0,
+        currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
         onTap: (int index) {
-          print('点击了第$index个Tab');
+          setState(() {
+            _currentIndex = index;
+          });
         },
       );
         
-      return new Scaffold(
+      return MaterialApp(
+        title: 'Welcome to Flutter',
+        theme: new ThemeData(
+          primaryColor:  Colors.blue,
+        ),
+        home: Scaffold(
         appBar: AppBar(
           title: Text('微信'),
         ),
         body: Container(
           color: Colors.red,
         ),
-        // bottomNavigationBar: botNavBar,
-      );
-    }
+        bottomNavigationBar: botNavBar,
+      ),
+    );
+  }
 }
