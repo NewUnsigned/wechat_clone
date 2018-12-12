@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:wechat_clone/constants.dart';
 
 class NavigationIconView {
 
   final String _title;
-  final Widget _icon;
-  final Widget _activeIcon;
+  final IconData _icon;
+  final IconData _activeIcon;
   final BottomNavigationBarItem item;
 
-  NavigationIconView({Key key, Widget icon, Widget activeIcon,String title,}) : 
+  NavigationIconView({Key key, IconData icon, IconData activeIcon,String title,}) : 
     _title = title,
     _activeIcon = activeIcon,
     _icon = icon,
     item = new BottomNavigationBarItem(
-      icon: icon,
-      activeIcon: activeIcon,
+      icon: Icon(icon),
+      activeIcon: Icon(activeIcon),
       title: Text(title)
     );
 }
@@ -36,23 +37,29 @@ class _HomeScreenState extends State<HomeScreen> {
       _navigationViews = [
         NavigationIconView(
           title: '微信',
-          icon: Icon(Icons.ac_unit),
-          activeIcon: Icon(Icons.access_alarm)
+          icon: IconData(
+            0xe79f,
+            fontFamily: Constants.IconFontFamily,
+          ),
+          activeIcon: IconData(
+            0xe62f,
+            fontFamily: Constants.IconFontFamily,
+          )
         ),
         NavigationIconView(
           title: '微信',
-          icon: Icon(Icons.ac_unit),
-          activeIcon: Icon(Icons.access_alarm)
+          icon: Icons.ac_unit,
+          activeIcon: Icons.access_alarm
         ),
         NavigationIconView(
           title: '微信',
-          icon: Icon(Icons.ac_unit),
-          activeIcon: Icon(Icons.access_alarm)
+          icon: Icons.ac_unit,
+          activeIcon: Icons.access_alarm
         ),
         NavigationIconView(
           title: '微信',
-          icon: Icon(Icons.ac_unit),
-          activeIcon: Icon(Icons.access_alarm)
+          icon: Icons.ac_unit,
+          activeIcon: Icons.access_alarm
         ),
       ];
     }
